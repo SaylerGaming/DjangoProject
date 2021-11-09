@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+body {
+    background-color: #f6f5fa;
+}
+nav {
+    background-color: #c9c1e6;
+    display: flex;
+    justify-content: space-between;
+}
+nav div {
+    display: flex;
+    justify-content: space-between;
+}
+a {
+    text-decoration: none;
+}
+.nav_content {
+    color: #443d63;
+    font-family: 'Russo One', sans-serif;
+    padding: 15px 25px;
+}
+.container {
+    width: 85%;
+    max-width: 96em;
+    margin: 0 auto;
+}
+.title {
+    color: #443d63;
+    font-family: 'Russo One', sans-serif;
+    font-size: 50px;
+}
+.center {
+    text-align: center;
+}
+.btn-new {
+    margin: 10px 0;
+    display: inline-block;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 2px solid #61578d;
+}
+.btn-new:active, .btn-new:hover {
+    background-color: #7c72aa;
+    color: white;
+    transition: 0.3s;
+}
+.products {
+    background-color: white;
+    width: 100%;
+}
+.product {
+    display: flex;
+    padding: 20px 30px;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+.tb-name {
+    text-align: left;
+    width: 70%;
+}
+.tb-category {
+    text-align: left;
+    width: 10%;
+}
+.tb-action {
+    text-align: right;
+    width: 20%;
+}
+.edit {
+    display: inline-block;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 2px solid #97ca30;
+    background-color: white;
+}
+.edit:active, .edit:hover {
+    background-color: #badb77;
+    color: white;
+    transition: 0.3s;
+}
+.delete {
+    color: black;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 2px solid #e41010;
+}
+.delete:active, .delete:hover {
+    background-color: #df5858;
+    color: white;
+    transition: 0.3s;
+}

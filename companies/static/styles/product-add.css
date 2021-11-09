@@ -1,0 +1,26 @@
+form {
+    padding: 15px 0;
+}
+.product-add {
+    background-color: white;
+}
+input {
+    width: 95%;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+textarea {
+    width: 95%;
+    padding: 5px 10px;
+    border-radius: 5px;
+    resize: none;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+.form-container {
+    margin-left: 2.5%;
+}
+form p, .edit {
+    margin-top: 15px;
+    margin-bottom: 3px;
+}

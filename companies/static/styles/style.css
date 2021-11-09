@@ -1,0 +1,188 @@
+:root {
+    --main-color: #2cc753;  
+    --dark-gray: #9ee597;
+
+}
+
+* {
+    margin: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+html {
+    background-color: #d9fade;
+}
+nav {   
+    background-color: var(--dark-gray);
+    display: flex;
+    justify-content: space-between;
+}
+a {
+    text-decoration: none;
+}
+.container {
+    width: 85%;
+    max-width: 96em;
+    margin: 0 auto;
+}
+.title {
+    margin-top: 15px;
+    color: var(--main-color);
+    font-size: 50px;
+    font-family: 'Russo One', sans-serif;
+    text-align: center;
+}
+.search_bar {
+    flex-grow: 2;
+}
+.search{
+    border: none;
+    margin: 5px 0px;
+    /* padding: 5px 0px; */
+    border-radius: 25px;
+    width: 100%;
+}
+.nav_content {
+    color: var(--main-color);
+    font-family: 'Russo One', sans-serif;
+    padding: 15px 25px;
+}
+.animated:hover, .animated:active{
+    color: rgb(14, 138, 2);
+    transition: 0.3s;
+
+}
+.card {
+    margin: 0 25px;
+}
+.card p{
+    color:var(--main-color);
+}
+.card img{
+    max-height: 150px;
+}
+nav div {
+    display: flex;
+    justify-content: space-between;
+}
+.popular {
+}   
+.popular p {
+    text-align: center;
+}
+.popular a {
+    text-decoration: none;
+    color: black;
+}
+.navbar{
+    display: flex;
+    background-color: var(--dark-gray);
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar a {
+    padding: 15px 25px;
+    text-decoration: none;
+    color: var(--main-color);
+}
+.cards {
+    padding: 150px 0;
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.country {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(1, 43, 1);
+    padding: 150px 0;
+}
+.country .title {
+    color: var(--main-color);
+    margin: 25px 0;
+}
+.countries {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+.countries span {
+    font-weight: 700;
+    text-align: center;
+    flex-basis: 15%;
+    min-width: 100px;
+    margin: 0;
+}
+.country span {
+    color: white;
+    margin: 15px 10px;
+    padding: 15px 25px;
+    background-color: #1f8530;
+    border-radius: 25px;
+}
+.guarantee-cards {
+    text-align: center;
+    display: flex;
+    gap: 3%;
+    justify-content: space-around;
+
+}
+
+.first {
+    margin-left: 3%;
+    
+}
+
+.last {
+    margin-right: 3%;
+}
+.guarantee {
+    
+    margin: 30px 0;
+    text-align: center;
+}
+.company-button{
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+}
+.guarantees a {
+    background-color: rgba(255,255,255 ,0.7);
+    display: inline-block;
+    padding: 15px 25px;
+    color: black;
+    border-radius: 25px;
+}
+.guarantees a:hover, .guarantee a:active {
+    padding: 25, 35;
+    background-color: rgba(255,255,255, 1);
+    transition: 0.3s;
+}
+.guarantee-card {
+    padding: 15px 25px;
+    background-color: var(--dark-gray);
+    color: #075800;
+    width: 30%;
+    border-radius: 15px;
+}
+.guarantee-card img{
+    width: 200px;
+}
+footer {
+    background-color: rgba(0,0,0,0.9);
+    text-align: center;
+    color: white;
+}
+footer .container {
+    padding: 15px 0;
+}
+.hidden {
+    color: rgba(255,255,255,0.5);
+}
+.inline {
+    display: inline-block;
+}

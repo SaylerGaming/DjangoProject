@@ -1,0 +1,31 @@
+.product {
+    padding: 75px 0;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+.product-show img{
+    width: 30%;
+}
+.rating {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+.rating img {
+    width: 25px;
+}
+.product-show{
+    display: flex;
+    gap: 20px;
+}
+.heading {
+    font-size: 35px;
+}
+.button {
+    display: inline-block;
+    font-size: 25px;
+    background-color: white;
+    color: #443D63;
+    padding: 5px 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+}

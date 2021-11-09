@@ -1,0 +1,23 @@
+.categories {
+    padding: 100px 0;
+}
+.category-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5%;
+    justify-content: center;
+}
+.category-card {
+    border-radius: 45px;
+    padding: 15px 15px;
+    width:15%;
+    background-color: white;
+    margin-top: 25px;
+}
+.category-card img {
+    padding: 0 5%;
+    width: 90%;
+}
+.category-card p {
+    text-align: center;
+}
