@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     {% load static %}
@@ -73,18 +74,12 @@
     <section class="guarantees">
         <p class="title">Мы гарантируем: </p>
         <div class="guarantee-cards first">
-            <div class="guarantee-card">
-                <img src="img/guarantee-1.png" alt="img">
-                <p>Лучшие рестораны вашего города. В нашем приложении — огромный выбор ресторанов. Закажите свою любимую еду или откройте для себя новые рестораны поблизости!</p>
-            </div>
-            <div class="guarantee-card">
-                <img src="img/guarantee-2.png" alt="img">
-                <p>Быстрая доставка. Наш плюс — скорость. Закажите доставку в черте города и мы все доставим за считанные минуты.</p>
-            </div>
-            <div class="guarantee-card last">
-                <img src="img/guarantee-3.png" alt="img">
-                <p>Доставка продуктов и не только. В нашем приложении есть все необходимое! От супермаркетов до небольших магазинов, от аптек до флористических бутиков — если нужный товар продается в вашем городе, мы доставим его вам!</p>
-            </div>
+            {% for guarantee in guarantees %}
+                <div class="guarantee-card">
+                    <img src="{{ guarantee.image.url }}" alt="img">
+                    <p>{{ guarantee.text }}</p>
+                </div>
+            {% endfor %}
         </div>
         <div class="company-button">
             <a href="company.html">Взять заказ</a>
