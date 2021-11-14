@@ -17,9 +17,11 @@ nav div {
 a {
     text-decoration: none;
 }
+.fancy-font {
+    font-family: 'Russo One', sans-serif;
+}
 .nav_content {
     color: #443d63;
-    font-family: 'Russo One', sans-serif;
     padding: 15px 25px;
 }
 .container {
@@ -29,7 +31,6 @@ a {
 }
 .title {
     color: #443d63;
-    font-family: 'Russo One', sans-serif;
     font-size: 50px;
 }
 .center {

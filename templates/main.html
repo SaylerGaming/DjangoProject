@@ -1,10 +1,22 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodStore</title>
+    {% load static %}
+    <!-- Google-Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/header.css' %}">
+    <!-- site-name -->
+    <title>FoodStore.dev</title>
 </head>
 <body>
     {% include 'navbar.html' %}
@@ -12,5 +24,11 @@
     {% block content %}
 
     {% endblock content %}
+    <footer>
+        <div class="container">
+            <p>Выполнено Русланом шигабутдиновым и темирланом Таукелов для выполнения лаболаторной работы. Все права защищены, даже не стоит проверять.</p>
+            <p class="hidden" >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente dicta, voluptas doloremque odio, laboriosam eos, nam quidem non repellat ullam saepe aperiam architecto aliquam perferendis dolore. Sit esse velit facere.</p>
+        </div>
+    </footer>
 </body>
 </html>

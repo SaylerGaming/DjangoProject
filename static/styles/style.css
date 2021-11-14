@@ -19,6 +19,9 @@ nav {
 a {
     text-decoration: none;
 }
+.fancy-font {
+    font-family: 'Russo One', sans-serif;
+}
 .container {
     width: 85%;
     max-width: 96em;
@@ -27,8 +30,7 @@ a {
 .title {
     margin-top: 15px;
     color: var(--main-color);
-    font-size: 50px;
-    font-family: 'Russo One', sans-serif;
+    font-size: 30px;
     text-align: center;
 }
 .search_bar {
@@ -43,7 +45,6 @@ a {
 }
 .nav_content {
     color: var(--main-color);
-    font-family: 'Russo One', sans-serif;
     padding: 15px 25px;
 }
 .animated:hover, .animated:active{
