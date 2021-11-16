@@ -1,0 +1,73 @@
+{% extends 'admin/main.html' %}
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/admin.css' %}">
+
+<section class="container">
+    <p class="title fancy-font center">Ваши товары</p>
+    <a href="admin-product-add.html" class="btn-new">Добавить товар</a>
+    <table class="products">
+        <thead>
+          <tr class="product">
+            <th class="tb-name">Название</th>
+            <th class="tb-category">Категория</th>
+            <th class="tb-action">Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="product">
+            <td class="tb-name">King Jr.</td>
+            <td class="tb-category">Бургер</td>
+            <td class="tb-action">
+                <div>
+                    <a class="edit" href="admin-product-edit.html">Изменить</a>
+                    <a class="delete" href="#">Удалить</a>
+                </div>
+            </td>
+          </tr>
+          <tr class="product">
+            <td class="tb-name">King Jr.</td>
+            <td class="tb-category">Бургер</td>
+            <td class="tb-action">
+                <div>
+                    <a class="edit" href="admin-edit.html">Изменить</a>
+                    <a class="delete" href="#">Удалить</a>
+                </div>
+            </td>
+          </tr>
+          <tr class="product">
+            <td class="tb-name">King Jr.</td>
+            <td class="tb-category">Бургер</td>
+            <td class="tb-action">
+                <div>
+                    <a class="edit" href="admin-edit.html">Изменить</a>
+                    <a class="delete" href="#">Удалить</a>
+                </div>
+            </td>
+          </tr>
+          <tr class="product">
+            <td class="tb-name">King Jr.</td>
+            <td class="tb-category">Бургер</td>
+            <td class="tb-action">
+                <div>
+                    <a class="edit" href="admin-edit.html">Изменить</a>
+                    <a class="delete" href="#">Удалить</a>
+                </div>
+            </td>
+          </tr>
+          <tr class="product">
+            <td class="tb-name">King Jr.</td>
+            <td class="tb-category">Бургер</td>
+            <td class="tb-action">
+                <div>
+                    <a class="edit" href="admin-edit.html">Изменить</a>
+                    <a class="delete" href="#">Удалить</a>
+                </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</section>
+{% endblock content %}

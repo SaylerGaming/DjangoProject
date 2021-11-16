@@ -1,0 +1,10 @@
+{% extends 'admin/main.html' %}
+{% block content %}
+
+<form method="post">
+    <p>Ты действительно хочешь удалить "{{ object }}"?</p>
+    <a href="{% url index %}">Вернуться</a>    
+    <input type="submit" value="confirm">
+</form>
+
+{% endblock content %}
