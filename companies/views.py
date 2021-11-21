@@ -10,12 +10,16 @@ def index(request):
 
 def company(request, slug):
     company = Company.objects.get(slug=slug)
-    return render(request, )
+    return render(request, 'companies/company.html', {'company': company})
 
 def companies(request):
     companies = Company.objects.all()
     return render(request, 'companies/companies.html', {'companies':companies, 'numbers':[1,2,3,4,5]})
 
+
+def adminIndex(request, slug):
+    company = Company.objects.get(slug = slug)
+    return render(request, 'admin/index.html', {'company': company})
 
 def createProduct(request):
     form = ProductForm()

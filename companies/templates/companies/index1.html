@@ -1,9 +1,0 @@
-<h1>наши гарантии:</h1>
-
-{% for company in companies %}
-    <a href="{% url 'company' company.id %}" >{{ company.name }}</a>
-{% endfor %}
-
-{% for guarantee in guarantees %}
-<p>{{ guarantee.text }}</p>
-{% endfor %}
