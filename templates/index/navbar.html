@@ -1,11 +1,16 @@
 <header>
-    <a class="nav-link" href="index.html"><h1 class="logo fancy-font">FoodStore</h1></a>
+    <a class="nav-link" href="{% url 'index' %}"><h1 class="logo fancy-font">FoodStore</h1></a>
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
     <nav>
       <ul>
         <li><a href="{% url 'companies' %}">Все компании</a></li>
         <li><a href="categories.html">Все категории</a></li>
-        <li><a href="login.html">Войти</a></li>
+        {% if request.user.is_authenticated %}
+          <li><a href="{% url 'userProfile' %}">Профиль</a></li>
+          <li><a href="{% url 'logoutUser' %}">Выйти</a></li>
+        {% else %}
+          <li><a href="{% url 'loginUser' %}">Войти</a></li>
+        {% endif %}
       </ul>
     </nav>
     <label for="nav-toggle" class="nav-toggle-label">

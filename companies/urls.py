@@ -6,7 +6,7 @@ urlpatterns = [
     path('company/<str:slug>', views.company, name='company'),
     path('companies', views.companies, name='companies'),
 
-    path('super-admin/company/<str:slug>', views.adminIndex, name='adminIndex'),
+    path('your-company/', views.companyIndex, name='companyIndex'),
     path('product/create/', views.createProduct, name='createProduct'),
     path('product/update/<int:id>/', views.updateProduct, name='updateProduct'),
     path('product/delete/<int:id>/', views.deleteProduct, name='deleteProduct'),

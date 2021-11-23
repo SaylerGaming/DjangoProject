@@ -1,0 +1,13 @@
+{% extends 'index/main.html' %}
+
+{% block content %}
+<div class="content">
+    <div style="background-color: white; margin: 25px">
+        <form action="{% url 'createCompany' %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit">
+        </form>
+    </div>
+</div>
+{% endblock content %}

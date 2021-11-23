@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+   <head>
+      {% load static %}
+      <!-- Google-Fonts -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+      <!-- favicon -->
+      <link rel="icon" type="image/png" href="img/favicon.png" />
+      
+      <link rel="stylesheet" href="{% static 'styles/registration.css' %}">
+      <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <body>
+      {% include 'messages.html' %}
+      <div class="wrapper">
+            <a href="{% url 'index' %}">Вернуться на сайт</a>
+         <div class="title-text">
+            <div class="title signup">
+               Регистрация
+            </div>
+         </div>
+         <div class="form-container">
+            <div class="form-inner">
+               <form action="{% url 'registerUser' %}" method="POST" class="signup">
+                  {% csrf_token %}
+                  {% for field in form %}
+                     <div class="field">
+                        {{ field }}
+                     </div>
+                  {% endfor %}
+                  <div class="field btn">
+                     <div class="btn-layer"></div>
+                     <input type="submit" value="Регистрация">
+                  </div>
+                  <div class="signup-link">
+                    Уже зарегестрированы? <a href="{% url 'loginUser' %}">Войти</a>
+                 </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

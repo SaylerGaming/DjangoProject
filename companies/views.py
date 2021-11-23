@@ -1,13 +1,16 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 from .models import Guarantee, Company, Category, Product
 from .forms import ProductForm
+from users.models import Profile
 
 def index(request):
     guarantees = Guarantee.objects.all()
     companies = Company.objects.all()
     return render(request, 'companies/index.html', {'guarantees': guarantees, 'companies': companies})
 
+@login_required(login_url='loginUser')
 def company(request, slug):
     company = Company.objects.get(slug=slug)
     return render(request, 'companies/company.html', {'company': company})
@@ -17,9 +20,12 @@ def companies(request):
     return render(request, 'companies/companies.html', {'companies':companies, 'numbers':[1,2,3,4,5]})
 
 
-def adminIndex(request, slug):
-    company = Company.objects.get(slug = slug)
-    return render(request, 'admin/index.html', {'company': company})
+def companyIndex(request):
+    user = Profile.objects.get(username = request.user.username)
+    company = user.company
+    products = Product.objects.filter(company_id=company.id)
+    context = {'user': user, 'company': company, 'products': products}
+    return render(request, 'your-company/index.html', context)
 
 def createProduct(request):
     form = ProductForm()
@@ -45,9 +51,5 @@ def updateProduct(request, id):
     return render(request, 'companies/product_form.html', context)
 
 def deleteProduct(request, id):
-    product = Product.objects.get(id=id)
-    if request.method == 'POST':
-        product.delete()
-        return redirect('index')
-    context = {'object':product}
-    return render(request, 'admin/deleteObject.html', context)
+    Product.objects.get(id=id).delete()
+    return redirect('index')

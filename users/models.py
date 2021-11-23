@@ -7,8 +7,7 @@ from companies.models import Company, Product
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
-    first_name = models.CharField(max_length=100, null=True, blank=True)
-    last_name = models.CharField(max_length=100, null=True, blank=True)
+    username = models.CharField(max_length=100, null=True, blank=True)
     email = models.EmailField(max_length=255, null=True, blank=True)
     profile_image = models.ImageField(null=True, blank=True, upload_to='profiles/', default='profiles/default.png')
     created_at = models.DateTimeField(auto_now_add=True)
