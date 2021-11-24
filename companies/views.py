@@ -1,9 +1,11 @@
+from django.core.checks import messages
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Guarantee, Company, Category, Product
 from .forms import ProductForm
 from users.models import Profile
+from django.contrib import messages
 
 def index(request):
     guarantees = Guarantee.objects.all()
@@ -53,3 +55,41 @@ def updateProduct(request, id):
 def deleteProduct(request, id):
     Product.objects.get(id=id).delete()
     return redirect('index')
+
+def companyCategories(request):
+    categories = Category.objects.all()
+    return render(request, 'your-company/categories.html', {'categories':categories})
+
+def categoryCreate(request):
+    if request.method == 'POST':
+        Category.objects.create(name = request.POST['name'], slug = request.POST['slug'])
+    return redirect('companyCategories')
+
+def categoryUpdate(request, id):
+    category = Category.objects.get(id=id)
+    if request.method == 'POST':
+        slug = request.POST['slug'].lower()
+        slug = list(slug)
+        category_slug = ''
+        for i in slug:
+            if i == ' ':
+                category_slug = category_slug + '_'
+            else:
+                category_slug = category_slug + i
+        try:
+            slug_check = Category.objects.get(slug=category_slug)
+        except:
+            slug_check = None
+        if slug_check is not None and slug_check != category:
+            messages.error(request, 'Данная ссылка уже используется')
+            return redirect('companyCategories')
+        category.name = request.POST['name']
+        category.slug = category_slug
+        category.save()
+        return redirect('companyCategories')
+    return render(request, 'your-company/categoryUpdate.html', {'category': category})
+    
+def categoryDelete(request, id):
+    Category.objects.get(id=id).delete()
+    messages.success(request, 'категория удалена')
+    return redirect('companyCategories')

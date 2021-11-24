@@ -1,0 +1,45 @@
+{% extends 'admin/main.html' %}
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/product-add.css' %}">
+
+    <p class="title fancy-font center">Создать категорию</p>
+    <form class="container product-add" method="post" action="{% url 'categoryCreate' %}">
+        {% csrf_token %}
+        <div class="form-container">
+            <p>Название</p>
+            <input type="text" name="name" placeholder="Название">
+            <p>Ссылка</p>
+            <input type="text" name="slug" placeholder="Ссылка">
+            <button type="submit" class="edit">Создать</button>
+        </div>
+    </form>
+    <div class="container">
+        <p class="title fancy-font center">Категории</p>
+        <table class="products">
+            <thead>
+                <tr class="product">
+                    <th class="tb-name">Название</th>
+                    <th class="tb-name">Ссылка</th>
+                    <th class="tb-action">Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for category in categories %}
+                <tr class="product">
+                    <td class="tb-name">{{ category.name }}</td>
+                    <td class="tb-name">{{ category.slug }}</td>
+                    <td class="tb-action">
+                        <div>
+                            <a class="edit" href="{% url 'categoryUpdate' category.id %}">Изменить</a>
+                            <a class="delete" href="{% url 'categoryDelete' category.id %}">Удалить</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

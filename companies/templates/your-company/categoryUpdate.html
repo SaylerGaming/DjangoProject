@@ -1,0 +1,20 @@
+{% extends 'admin/main.html' %}
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/product-add.css' %}">
+
+<p class="title center">Изменить категорию</p>
+<form class="container product-add" action="" method="post">
+    {% csrf_token %}
+    <div class="form-container">
+        <p>Название</p>
+        <input type="text" name="name" value="{{ category.name }}" placeholder="Название">
+        <p>Ссылка</p>
+        <input type="text" name="slug" value="{{ category.slug }}" placeholder="Ссылка">
+        <br>
+        <button type="submit" class="edit">Изменить</button>
+    </div>
+</form>
+{% endblock content %}

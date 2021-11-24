@@ -39,8 +39,8 @@ class Product(models.Model):
     description = models.TextField(null=True)
     price = models.PositiveIntegerField()
     new_price = models.PositiveIntegerField(null=True)
-    category = ForeignKey(Category, on_delete=models.SET_NULL, null=True)
-    company = ForeignKey(Company, on_delete=models.CASCADE)
+    category = ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
+    company = ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     def  __str__(self):
         return self.name

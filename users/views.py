@@ -57,7 +57,8 @@ def registerUser(request):
     return render(request, 'register.html', context)
 
 def userProfile(request):
-    return render(request, 'profile.html')
+    user = Profile.objects.get(user_id=request.user.id)
+    return render(request, 'profile.html', {'user': user})
 
 def createCompany(request):
     form = CompanyForm()

@@ -2,6 +2,7 @@ form {
     padding: 15px 0;
 }
 .product-add {
+    border-radius: 15px;
     background-color: white;
 }
 input {
@@ -19,6 +20,9 @@ textarea {
 }
 .form-container {
     margin-left: 2.5%;
+}
+.form-container input {
+    margin-top: 10px;
 }
 form p, .edit {
     margin-top: 15px;

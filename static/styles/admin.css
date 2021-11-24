@@ -50,6 +50,7 @@ a {
     transition: 0.3s;
 }
 .products {
+    border-radius: 15px 15px 0 0;
     background-color: white;
     width: 100%;
 }
