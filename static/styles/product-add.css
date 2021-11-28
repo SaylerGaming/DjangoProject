@@ -2,11 +2,14 @@ form {
     padding: 15px 0;
 }
 .product-add {
+    display: flex;
+    flex-direction: column;
     border-radius: 15px;
     background-color: white;
 }
 input {
-    width: 95%;
+    margin-top: 15px;
+    width: 90%;
     padding: 5px 10px;
     border-radius: 5px;
     border: 1px solid rgba(0,0,0,0.2);

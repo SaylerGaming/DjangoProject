@@ -3,6 +3,9 @@
         <a href="{% url 'index' %}" class="nav_content">Вернуться на сайт</a>
     </div>
     <div>
+        {% if company.is_confirmed %}
+            <a href="{% url 'companyAdvertise' %}"><p class="nav_content">Заказать рекламу</p></a>
+        {% endif %}
         <a href="{% url 'companyIndex' %}"><p class="nav_content">Ваши товары</p></a>
         <a href="{% url 'companyCategories' %}"><p class="nav_content">Категории</p></a>
     </div>

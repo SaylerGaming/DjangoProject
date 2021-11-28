@@ -56,20 +56,19 @@ a {
 }
 .product {
     display: flex;
+    justify-content: space-between;
     padding: 20px 30px;
     border-bottom: 1px solid rgba(0,0,0,0.3);
 }
 .tb-name {
     text-align: left;
-    width: 70%;
+    
 }
 .tb-category {
     text-align: left;
-    width: 10%;
 }
 .tb-action {
     text-align: right;
-    width: 20%;
 }
 .edit {
     display: inline-block;

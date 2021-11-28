@@ -1,0 +1,18 @@
+{% extends 'admin/main.html' %}
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/product-add.css' %}">
+
+<h1>{{ page.title }}</h1>
+<div class="content">
+    <form method="post" class="container product-add">
+        {% csrf_token %}
+        {% for field in form %}
+            {{ field }}
+        {% endfor %}
+        <input type="submit" class="edit" value="{{ page.btn }}">
+    </form>
+</div>
+{% endblock %}

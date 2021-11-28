@@ -8,27 +8,31 @@
     <p class="title fancy-font center">Ваши товары</p>
     <a href="{% url 'createProduct' %}" class="btn-new">Добавить товар</a>
     <table class="products">
-        <thead>
           <tr class="product">
             <th class="tb-name">Название</th>
+            <th class="tb-price">Цена</th>
+            <th class="tb-new_price">Цена со кидкой</th>
             <th class="tb-category">Категория</th>
             <th class="tb-action">Действия</th>
           </tr>
-        </thead>
-        <tbody>
           {% for product in products %}
             <tr class="product">
               <td class="tb-name">{{ product.name }}</td>
-              <td class="tb-category">Бургер</td>
+              <td class="tb-price">{{ product.price }}</td>
+              {% if product.new_price %}
+                <td class="tb-new_price">{{ product.new_price }}</td>
+              {% else %}
+                <td class="tb-new_price"></td>
+              {% endif %}
+              <td class="tb-category">{{ product.category }}</td>
               <td class="tb-action">
                   <div>
-                      <a class="edit" href="admin-product-edit.html">Изменить</a>
+                      <a class="edit" href="{% url 'updateProduct' product.id %}">Изменить</a>
                       <a class="delete" href="#">Удалить</a>
                   </div>
               </td>
             </tr>
           {% endfor %}
-        </tbody>
       </table>
 </section>
 {% endblock content %}

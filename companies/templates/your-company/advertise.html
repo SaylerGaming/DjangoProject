@@ -1,0 +1,50 @@
+{% extends 'admin/main.html' %}
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/checkbox.css' %}">
+
+<h1>Хотите заказать рекламу для вашей компании?</h1>
+
+<div class="check-flex">
+    <div class="radiogroup">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="wrapper">
+                <input class="state" type="radio" name="duration" id="a" value="1">
+                <label class="label" for="a">
+                    <div class="indicator"></div>
+                    <span class="text">a) День - 5$</span>
+                </label>
+            </div>
+            <div class="wrapper">
+                <input class="state" type="radio" name="duration" id="b" value="7">
+                <label class="label" for="b">
+                    <div class="indicator"></div>
+                    <span class="text">b) Неделя - 30$</span>
+                </label>
+            </div>
+            <div class="wrapper">
+                <input class="state" type="radio" name="duration" id="c" value="31">
+                <label class="label" for="c">
+                    <div class="indicator"></div>
+                    <span class="text">c) Месяц - 125$</span>
+                </label>
+            </div>
+            <div class="wrapper">
+                <input class="state" type="radio" name="duration" id="d" value="custom">
+                <label class="label" for="d">
+                    <div class="indicator"></div>
+                    <span class="text">d) <input class="check-input" type="number" name="days" placeholder="Ваше значение"></span>
+                </label>
+                <p>* Цена за рекламу - 5$ за день</p>
+            </div>
+            <div class="flex-end">
+                <button type="submit" class="noselect">Купить</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

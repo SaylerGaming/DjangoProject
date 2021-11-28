@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Guarantee, Company, Category, Product
 from .forms import ProductForm
 from users.models import Profile
+from advertising.models import RecomendedContent
 from django.contrib import messages
 
 def index(request):
@@ -12,49 +13,68 @@ def index(request):
     companies = Company.objects.all()
     return render(request, 'companies/index.html', {'guarantees': guarantees, 'companies': companies})
 
-@login_required(login_url='loginUser')
 def company(request, slug):
     company = Company.objects.get(slug=slug)
-    return render(request, 'companies/company.html', {'company': company})
+    products = Product.objects.filter(company_id=company.id)
+    context = {'numbers':[1,2,3,4,5], 'company': company, 'products': products}
+    return render(request, 'companies/company.html', context)
 
 def companies(request):
-    companies = Company.objects.all()
+    companies = Company.objects.filter(is_confirmed=1)
     return render(request, 'companies/companies.html', {'companies':companies, 'numbers':[1,2,3,4,5]})
 
 
 def companyIndex(request):
-    user = Profile.objects.get(username = request.user.username)
+    user = Profile.objects.get(user_id = request.user.id)
     company = user.company
     products = Product.objects.filter(company_id=company.id)
     context = {'user': user, 'company': company, 'products': products}
     return render(request, 'your-company/index.html', context)
 
+def companyAdvertise(request):
+    user = Profile.objects.get(user_id = request.user.id)
+    company = user.company
+    context = {'user': user, 'company': company}
+    if request.method == 'POST':
+        duration = request.POST['duration']
+        if duration == 'custom':
+            duration = request.POST['days']
+        RecomendedContent.objects.create(company = company, duration = duration)
+        messages.success(request, 'Реклама заказана!')
+        return redirect('companyIndex')
+    return render(request, 'your-company/advertise.html', context)
+
 def createProduct(request):
     form = ProductForm()
-
+    page = {'title':'Созать Товар', 'btn':'Создать'}
     if request.method == 'POST':
         form = ProductForm(request.POST)
         if form.is_valid():
-            form.save()
+            product = form.save(commit=False)
+            user = Profile.objects.get(user_id=request.user.id)
+            product.company_id = user.company_id
+            product.save()
             return redirect('index') 
-    context = {'form': form}
-    return render(request, 'companies/product_form.html', context)
+    context = {'form': form, 'page':page}
+    return render(request, 'your-company/product_form.html', context)
 
+@login_required(login_url='loginUser')
 def updateProduct(request, id):
     product = Product.objects.get(id=id)
+    page = {'title':'Изменить Товар', 'btn':'Изменить'}
     form = ProductForm(instance=product)
 
     if request.method == 'POST':
         form = ProductForm(request.POST, instance=product)
         if form.is_valid():
             form.save()
-            return redirect('index') 
-    context = {'form': form}
-    return render(request, 'companies/product_form.html', context)
+            return redirect('companyIndex') 
+    context = {'form': form, 'page':page}
+    return render(request, 'your-company/product_form.html', context)
 
 def deleteProduct(request, id):
     Product.objects.get(id=id).delete()
-    return redirect('index')
+    return redirect('companyIndex')
 
 def companyCategories(request):
     categories = Category.objects.all()

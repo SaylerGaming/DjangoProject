@@ -24,7 +24,7 @@
                         {% endfor %}
                     </div>
                     <p>{{ company.description }}</p>
-                    <a href="company.html" class="button">Посмотреть товары</a>
+                    <a href="{% url 'company' company.slug %}" class="button">Посмотреть товары</a>
                 </div>
             </div>
         </div>
