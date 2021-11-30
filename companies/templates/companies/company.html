@@ -8,7 +8,7 @@
 <section class="product">
     <div class="container">
         <div class="product-show">
-            <img src="https://brandslogos.com/wp-content/uploads/images/large/kfc-logo-1.png" alt="kfc_img">
+            <img src="{{ company.logo.url }}" alt="kfc_img">
             <div class="product-content">
                 <p class="title">{{ comapny.name }}</p>
                 <div class="rating">
@@ -29,7 +29,7 @@
     {% for product in products %}
     <div class="product-item">
         <p class="heading">{{ product.name }}</p>
-        <img src="img/kombo-3-tvister.png">
+        <img src="{{ product.image.url }}">
         <p>{{ product.description }}</p>
         <button>{{ product.price }} тг</button>
     </div>

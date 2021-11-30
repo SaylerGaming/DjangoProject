@@ -7,11 +7,14 @@ from .forms import ProductForm
 from users.models import Profile
 from advertising.models import RecomendedContent
 from django.contrib import messages
+from advertising.models import RecomendedContent
+from datetime import datetime, timedelta
 
 def index(request):
     guarantees = Guarantee.objects.all()
     companies = Company.objects.all()
-    return render(request, 'companies/index.html', {'guarantees': guarantees, 'companies': companies})
+    advertise = RecomendedContent.objects.all()
+    return render(request, 'companies/index.html', {'guarantees': guarantees, 'companies': companies, 'advertise':advertise})
 
 def company(request, slug):
     company = Company.objects.get(slug=slug)
@@ -34,7 +37,13 @@ def companyIndex(request):
 def companyAdvertise(request):
     user = Profile.objects.get(user_id = request.user.id)
     company = user.company
-    context = {'user': user, 'company': company}
+    try:
+        ad = RecomendedContent.objects.get(company=company)
+    except:
+        ad = None
+    if ad is not None:
+        ad.created_at = datetime.date(ad.created_at)
+    context = {'user': user, 'company': company, 'ad':ad}
     if request.method == 'POST':
         duration = request.POST['duration']
         if duration == 'custom':

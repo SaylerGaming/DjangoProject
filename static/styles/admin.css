@@ -62,13 +62,19 @@ a {
 }
 .tb-name {
     text-align: left;
-    
+    width: 50%;
 }
 .tb-category {
-    text-align: left;
+    text-align: center;
+    width: 10%;
+}
+.tb-price {
+    text-align: center;
+    width: 10%;
 }
 .tb-action {
     text-align: right;
+    width: 20%;
 }
 .edit {
     display: inline-block;

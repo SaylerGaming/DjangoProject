@@ -2,10 +2,11 @@
 {% block content %}
 
 {% load static %}
-
 <link rel="stylesheet" href="{% static 'styles/checkbox.css' %}">
 
-<h1>Хотите заказать рекламу для вашей компании?</h1>
+{% if ad is None %}
+
+<h1 style="text-align: center; margin-top: 25px; color: #480657">Хотите заказать рекламу для вашей компании?</h1>
 
 <div class="check-flex">
     <div class="radiogroup">
@@ -46,5 +47,13 @@
         </form>
     </div>
 </div>
-
+{% else %}
+<div class="check-flex">
+    <div class="radiogroup">
+        <h1>Ваш заказ:</h1>
+        <p>реклама на {{ ad.duration }} дней</p>
+        <p>заказана {{ ad.created_at }}</p>
+    </div>
+</div>
+{% endif %}
 {% endblock content %}

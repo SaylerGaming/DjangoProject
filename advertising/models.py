@@ -14,7 +14,7 @@ class RecomendedContent(models.Model):
     duration = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     def  __str__(self):
-        return self.company
+        return self.company.name
 
 class Review(models.Model):
     profile = models.ForeignKey(Profile, on_delete=CASCADE, null=True, blank=True)

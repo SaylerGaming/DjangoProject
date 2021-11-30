@@ -10,5 +10,6 @@
     {% else %}
         <a style="color: green;" href="{% url 'createCompany' %}"><h1>Создать свою компанию</h1></a>
     {% endif %}
+    <h1><a style="color: green;" href="{% url 'logoutUser' %}">Выход</a></h1>
 </div>
 {% endblock content %}

@@ -7,11 +7,12 @@
     <p class="title fancy-font center">{{ company.name }}</p>
     <p class="title fancy-font center">Ваши товары</p>
     <a href="{% url 'createProduct' %}" class="btn-new">Добавить товар</a>
+    {% if products %}
     <table class="products">
           <tr class="product">
             <th class="tb-name">Название</th>
             <th class="tb-price">Цена</th>
-            <th class="tb-new_price">Цена со кидкой</th>
+            <th class="tb-price">Цена со кидкой</th>
             <th class="tb-category">Категория</th>
             <th class="tb-action">Действия</th>
           </tr>
@@ -20,9 +21,9 @@
               <td class="tb-name">{{ product.name }}</td>
               <td class="tb-price">{{ product.price }}</td>
               {% if product.new_price %}
-                <td class="tb-new_price">{{ product.new_price }}</td>
+                <td class="tb-price">{{ product.new_price }}</td>
               {% else %}
-                <td class="tb-new_price"></td>
+                <td class="tb-price"></td>
               {% endif %}
               <td class="tb-category">{{ product.category }}</td>
               <td class="tb-action">
@@ -34,5 +35,8 @@
             </tr>
           {% endfor %}
       </table>
+      {% else %}
+      <h1 style="text-align: center; margin-top: 25px;">Товаров нет...</h1>
+      {% endif %}
 </section>
 {% endblock content %}
