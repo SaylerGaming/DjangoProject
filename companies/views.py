@@ -5,9 +5,9 @@ from django.contrib.auth.decorators import login_required
 from .models import Guarantee, Company, Category, Product
 from .forms import ProductForm
 from users.models import Profile
-from advertising.models import RecomendedContent
+from advertising.models import RecomendedContent, Review
 from django.contrib import messages
-from advertising.models import RecomendedContent
+from advertising.models import RecomendedContent, Review
 from datetime import datetime, timedelta
 
 def index(request):
@@ -122,3 +122,21 @@ def categoryDelete(request, id):
     Category.objects.get(id=id).delete()
     messages.success(request, 'категория удалена')
     return redirect('companyCategories')
+
+def companyReview(request, slug):
+    company = Company.objects.get(slug=slug)
+    reviews = Review.objects.filter(company=company)
+    if(request.method == 'POST'):
+        profile = Profile.objects.get(user_id = request.user.id)
+        review = Review.objects.create(profile=profile, stars=request.POST['stars'], company=company, text=request.POST['comment'])
+        companyRating = 0
+        ReviewCount = 0
+        for item in reviews:
+            companyRating += item.stars
+            ReviewCount += 1
+        companyRating = (companyRating + int(request.POST['stars'])) / (ReviewCount + 1) 
+        company.rating = companyRating
+        company.save()
+        return redirect('companyReview', slug)
+    context = {'company':company, 'reviews':reviews}
+    return render(request, 'companies/review.html', context)

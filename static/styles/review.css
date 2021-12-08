@@ -1,0 +1,132 @@
+.review-box {
+  text-align: left;
+  border: 1px #044e14 solid;
+  color: #044e14;
+  width: 60%;
+  padding: 10px 15px;
+  border-radius: 15px;
+}
+
+
+.box {
+    display: block;
+    width: 80%;
+    margin: 1vh auto;
+  }
+textarea {
+    -webkit-tap-highlight-color: transparent;
+    width: 100%;
+    min-height: 8rem;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    line-height: 2rem;
+    font-weight: 300;
+    background:#FFFFFF;
+    border: none;
+    border-radius: 1rem;
+    outline: none;
+    box-shadow: 
+      18px 18px 30px #D1D9E9, 
+      -18px -18px 30px #FFFFFF;
+    resize: vertical;
+    transition: ease .2s;
+    cursor: pointer;
+    margin: 15px 0;
+  }
+
+input {
+    width: 100%;
+    min-height: 1rem;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    line-height: 2rem;
+    font-weight: 300;
+    background:#FFFFFF;
+    border: none;
+    border-radius: 1rem;
+    outline: none;
+    box-shadow: 
+      18px 18px 30px #D1D9E9, 
+      -18px -18px 30px #FFFFFF;
+    margin: 15px 0;
+}
+
+input:focus {
+    box-shadow: 
+      inset 9px 9px 15px #D1D9E9, 
+      inset -9px -9px 15px #FFFFFF;
+  }
+  
+  textarea::placeholder, input::placeholder{
+    color: #9fa8da;
+  }
+  
+  textarea:focus {
+    min-height: 12rem;
+    box-shadow: 
+      inset 18px 18px 30px #D1D9E9, 
+      inset -18px -18px 30px #FFFFFF;
+  }
+  
+  /* Chrome/Opera/Safari */
+  ::-webkit-input-placeholder { 
+    color: transparent;
+  }
+  /* Firefox 19+ */
+  ::-moz-placeholder { 
+    color: transparent;
+  }
+  /* IE 10+ */
+  :-ms-input-placeholder { 
+    color: transparent;
+  }
+  /* Firefox 18- */
+  :-moz-placeholder { 
+    color: transparent;
+  }
+  
+  textarea:placeholder-shown {
+    background: none;
+  }
+  
+/* кнопка */
+.noselect {
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+          -webkit-tap-highlight-color: transparent;
+  }
+  
+  button {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    color: #829bad;
+    font-size: 20px;
+    border-radius: 4px;
+    box-shadow: inset 0px 3px 5px rgba(255,255,255,0.5), 0px 0px 10px rgba(0,0,0,0.15);
+    background: rgb(2,0,36);
+    background: linear-gradient(45deg, rgba(2,0,36,0) 5%, rgba(137, 224, 184, 0.3) 6%, rgba(255,255,255,0) 9%, rgba(137, 224, 184, 0.3) 10%, rgba(255,255,255,0) 17%, rgba(137, 224, 184, 0.3) 19%, rgba(255,255,255,0) 21%);
+    background-size: 150%;
+    background-position: right;
+    transition: 1s;
+  }
+  
+  button:hover {
+      background-position: left;
+      color: #394a56;
+      box-shadow: inset 0px 3px 5px rgba(255,255,255,1), 0px 0px 10px rgba(0,0,0,0.25);
+  }
+  
+  button:focus {
+      outline: none;
+  }
+
+.flex-end {
+    display: flex;
+    justify-content: end;
+}

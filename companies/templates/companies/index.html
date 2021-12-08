@@ -10,7 +10,7 @@
             <div class="cards">
                 {% for ad in advertise %}
                     <div class="card">
-                        <a href="{% url 'company' ad.company.slug %}"><img src="{{ ad.company.logo_min.url }}" alt="kfc_img">
+                        <a href="{% url 'company' ad.company.slug %}"><img src="{{ ad.company.logo_min.url }}">
                         <p>{{ ad.company.name }}</p></a>
                     </div>
                 {% endfor %}

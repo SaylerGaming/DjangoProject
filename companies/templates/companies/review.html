@@ -1,0 +1,34 @@
+{% extends 'index/main.html' %}
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/review.css' %}">
+
+<div class="content" style="background-color: white; padding-top: 3em;">
+
+    {% if reviews %}
+        <h1 class="title fancy-font">Отзывы о компании {{ company.name }}</h1>
+        {% for review in reviews %}
+            <div class="review-box">
+                <p style="font-weight: 900;">{{ review.profile.username }}</p>
+                <p>{{ review.text }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <h1 class="title fancy-font">Знаешь место?<br>
+        Напиши свой комментарий!</h1>
+    <form method="post">
+        <div style="display: flex; flex-direction:column">
+            {% csrf_token %}
+            <div class="box">
+                <input name="stars" type="number" placeholder="1 - 5">
+                <textarea name="comment" id="comment" placeholder="Напишите отзыв"></textarea>
+            </div>
+            <div class="flex-end">
+                <button type="submit" class="noselect">Оценить</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}

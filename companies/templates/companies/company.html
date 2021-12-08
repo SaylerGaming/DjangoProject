@@ -8,7 +8,7 @@
 <section class="product">
     <div class="container">
         <div class="product-show">
-            <img src="{{ company.logo.url }}" alt="kfc_img">
+            <img src="{{ company.logo.url }}">
             <div class="product-content">
                 <p class="title">{{ comapny.name }}</p>
                 <div class="rating">
@@ -20,6 +20,7 @@
                         {% endif %}
                     {% endfor %}
                 </div>
+                <a href="{% url 'companyReview' company.slug %}">Посмотреть отзывы</a>
                 <p>{{ company.description }}</p>
             </div>
         </div>

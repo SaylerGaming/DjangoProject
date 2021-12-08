@@ -23,7 +23,7 @@ class Review(models.Model):
     text = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     def  __str__(self):
-        return self.profile
+        return self.text
 
 class Reserve(models.Model):
     company = ForeignKey(Company, on_delete=CASCADE, null=True, blank=True)
