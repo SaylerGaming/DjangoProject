@@ -126,6 +126,12 @@ def categoryDelete(request, id):
 def companyReview(request, slug):
     company = Company.objects.get(slug=slug)
     reviews = Review.objects.filter(company=company)
+    if request.user.is_authenticated:
+        profile = Profile.objects.get(user_id = request.user.id)
+        try:
+            userReview = Review.objects.get(company=company, profile=profile)
+        except:
+            userReview = None
     if(request.method == 'POST'):
         profile = Profile.objects.get(user_id = request.user.id)
         review = Review.objects.create(profile=profile, stars=request.POST['stars'], company=company, text=request.POST['comment'])
@@ -138,5 +144,5 @@ def companyReview(request, slug):
         company.rating = companyRating
         company.save()
         return redirect('companyReview', slug)
-    context = {'company':company, 'reviews':reviews}
+    context = {'company':company, 'reviews':reviews, 'userReview':userReview, 'numbers':[1,2,3,4,5]}
     return render(request, 'companies/review.html', context)

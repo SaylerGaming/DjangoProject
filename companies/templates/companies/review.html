@@ -11,10 +11,19 @@
         {% for review in reviews %}
             <div class="review-box">
                 <p style="font-weight: 900;">{{ review.profile.username }}</p>
+                {% for i in numbers %}
+                    {% if i <= review.stars %}
+                        <img style="width: 15px;" src="{% static 'img/star.png' %}">
+                    {% else %}
+                        <img style="width: 15px;" src="{% static 'img/no-star.png' %}">
+                    {% endif %}
+                {% endfor %}
                 <p>{{ review.text }}</p>
             </div>
         {% endfor %}
     {% endif %}
+
+    {% if userReview is None %}
 
     <h1 class="title fancy-font">Знаешь место?<br>
         Напиши свой комментарий!</h1>
@@ -30,5 +39,8 @@
             </div>
         </div>
     </form>
+    {% else %}
+        <h1  class="title fancy-font">Вы уже оценили эту компанию</h1>
+    {% endif %}
 </div>
 {% endblock content %}
