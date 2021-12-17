@@ -9,7 +9,7 @@
             <p class="title fancy-font">Популярные рестораны</p>
             <div class="cards">
                 {% for ad in advertise %}
-                    <div class="card">
+                    <div class="card" style="margin: 0 10px">
                         <a href="{% url 'company' ad.company.slug %}"><img src="{{ ad.company.logo_min.url }}">
                         <p>{{ ad.company.name }}</p></a>
                     </div>
@@ -20,7 +20,7 @@
 {% endif %}
 <section class="country">
     <div class="container">
-    <p class="title fancy-font">Выбери свой город!</p>
+    <p class="title fancy-font">Ваш город есть в списке?</p>
     <div class="countries">
         <span>Алмата</span>
         <span>Астана</span>
@@ -32,16 +32,73 @@
     </div>
     </div>
 </section>
-<section class="guarantees">
+<section class="guarantees" style="background-color:#CDF6E2">
     <p class="title fancy-font">Мы гарантируем: </p>
-    <div class="guarantee-cards first">
-        {% for guarantee in guarantees %}
-            <div class="guarantee-card">
-                <img src="{{ guarantee.image.url }}" alt="img">
-                <p>{{ guarantee.text }}</p>
+    <!-- Carousel wrapper -->
+    <div
+    id="carouselDarkVariant"
+    class="carousel slide carousel-fade carousel-dark"
+    data-mdb-ride="carousel"
+  >
+<!-- Indicators -->
+<div class="carousel-indicators">
+    {% for count in guarantees_count %}
+        <button
+            type="button"
+            data-mdb-target="#carouselDarkVariant"
+            data-mdb-slide-to="{{ count }}"
+            {% if count == 0 %}
+            class="active"
+            aria-current="true"
+            {% endif %}
+        ></button>
+  {% endfor %}
+</div>
+
+<!-- Inner -->
+<div class="carousel-inner">
+    {% for guarantee in guarantees %}
+        <!-- Single item -->
+        {% if forloop.first %}
+            <div class="carousel-item active">
+        {% else %}
+            <div class="carousel-item">
+        {% endif %}
+            <img
+            src="{{ guarantee.image.url }}"
+            class="d-block w-100"
+            alt="Sunset Over the City"
+            />
+            <div class="carousel-caption d-none d-md-block">
+            <p class="text-dark">{{ guarantee.text }}</p>
             </div>
-        {% endfor %}
-    </div>
+        </div>
+    {% endfor %}
+</div>
+<!-- Inner -->
+
+<!-- Controls -->
+<button
+  class="carousel-control-prev"
+  type="button"
+  data-mdb-target="#carouselDarkVariant"
+  data-mdb-slide="prev"
+>
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Previous</span>
+</button>
+<button
+  class="carousel-control-next"
+  type="button"
+  data-mdb-target="#carouselDarkVariant"
+  data-mdb-slide="next"
+>
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Next</span>
+</button>
+</div>
+<!-- Carousel wrapper -->
+
     <div class="company-button">
         <a href="company.html">Взять заказ</a>
     </div>

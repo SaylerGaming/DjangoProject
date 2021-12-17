@@ -2,11 +2,14 @@
   text-align: left;
   border: 1px #044e14 solid;
   color: #044e14;
-  width: 60%;
+  width: 80%;
   padding: 10px 15px;
   border-radius: 15px;
 }
 
+body {
+  background-color: white;
+}
 
 .box {
     display: block;

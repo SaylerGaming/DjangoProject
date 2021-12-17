@@ -1,7 +1,7 @@
 {% extends 'index/main.html' %}
 
 {% block content %}
-<div class="content">
+<!-- <div class="content">
     <h1 style="color: white;">Ваш профиль</h1>
     <h1 style="color: white;">{{ user.first_name }}</h1>
     <h1 style="color: white;">{{ user.username }}</h1>
@@ -11,5 +11,28 @@
         <a style="color: green;" href="{% url 'createCompany' %}"><h1>Создать свою компанию</h1></a>
     {% endif %}
     <h1><a style="color: green;" href="{% url 'logoutUser' %}">Выход</a></h1>
-</div>
+</div> -->
+
+<div class="card text-center container mt-4">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="true" href="#!">Профиль</a>
+        </li>
+        <li class="nav-item">
+            {% if user.company_id is not null %}
+                <a class="nav-link" href="{% url 'companyIndex' %}">Ваша компания</a>
+            {% else %}
+                <a class="nav-link" href="{% url 'createCompany' %}">Создать компанию</a>
+            {% endif %}
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ user.first_name }}</h5>
+      <p class="card-text">Username: {{ user.username }}</p>
+      <p class="card-text">Отывов оставлено: {{ count }}</p>
+    </div>
+  </div>
+
 {% endblock content %}

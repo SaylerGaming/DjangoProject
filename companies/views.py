@@ -12,14 +12,18 @@ from datetime import datetime, timedelta
 
 def index(request):
     guarantees = Guarantee.objects.all()
+    guarantees_count = Guarantee.objects.all().count()
+    guarantees_count = list(range(0, guarantees_count))
+    guarantees_count_2 = guarantees_count
     companies = Company.objects.all()
     advertise = RecomendedContent.objects.all()
-    return render(request, 'companies/index.html', {'guarantees': guarantees, 'companies': companies, 'advertise':advertise})
+    return render(request, 'companies/index.html', {'guarantees': guarantees, 'companies': companies, 'advertise':advertise, 'guarantees_count':guarantees_count, 'guarantees_count_2': guarantees_count_2})
 
 def company(request, slug):
     company = Company.objects.get(slug=slug)
     products = Product.objects.filter(company_id=company.id)
-    context = {'numbers':[1,2,3,4,5], 'company': company, 'products': products}
+    reviews = Review.objects.filter(company=company)
+    context = {'numbers':[1,2,3,4,5], 'company': company, 'products': products, 'reviews':reviews}
     return render(request, 'companies/company.html', context)
 
 def companies(request):

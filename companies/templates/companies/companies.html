@@ -8,12 +8,12 @@
 <link rel="stylesheet" href="{% static 'styles/companies.css' %}">
 
 {% for company in companies %}
-    <section class="product">
+    <section class="product" style="background-color: #d9fade;">
         <div class="container">
             <div class="product-show">
                 <img src="{{ company.logo.url }}">
                 <div class="product-content">
-                    <p class="title">{{ company.name }}</p>
+                    <p class="title fancy-font" style="text-align: left;">{{ company.name }}</p>
                     <div class="rating">
                         {% for i in numbers %}
                         {% if i <= company.rating %}

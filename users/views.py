@@ -9,6 +9,7 @@ from django.urls import conf
 from .forms import CustomUserCreationForm, CompanyForm
 from companies.models import Company
 from .models import Profile
+from advertising.models import Review
 
 def loginUser(request):
 
@@ -58,7 +59,8 @@ def registerUser(request):
 
 def userProfile(request):
     user = Profile.objects.get(user_id=request.user.id)
-    return render(request, 'profile.html', {'user': user})
+    count = Review.objects.filter(profile=user).count()
+    return render(request, 'profile.html', {'user': user, 'count': count})
 
 def createCompany(request):
     form = CompanyForm()

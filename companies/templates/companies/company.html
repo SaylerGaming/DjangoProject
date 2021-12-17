@@ -3,9 +3,10 @@
 
 {% load static %}
 <link rel="stylesheet" href="{% static 'styles/company.css' %}">
+<link rel="stylesheet" href="{% static 'styles/bg-green.css' %}">
 
 
-<section class="product">
+<section class="product" style="background-color: #d9fade;">
     <div class="container">
         <div class="product-show">
             <img src="{{ company.logo.url }}">
@@ -20,20 +21,90 @@
                         {% endif %}
                     {% endfor %}
                 </div>
-                <a href="{% url 'companyReview' company.slug %}">Посмотреть отзывы</a>
+                <button
+                type="button"
+                class="btn btn-outline-success"
+                data-mdb-toggle="modal"
+                data-mdb-target="#exampleModal"
+                >
+                Посмотреть отзывы
+                </button>
+                <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+                >
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Отзывы</h5>
+                        <button
+                        type="button"
+                        class="btn-close"
+                        data-mdb-dismiss="modal"
+                        aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        {% if reviews %}
+                            {% for review in reviews %}
+                                <div class="review-box">
+                                    <p style="font-weight: 900;">{{ review.profile.username }}</p>
+                                    {% for i in numbers %}
+                                        {% if i <= review.stars %}
+                                            <img style="width: 15px;" src="{% static 'img/star.png' %}">
+                                        {% else %}
+                                            <img style="width: 15px;" src="{% static 'img/no-star.png' %}">
+                                        {% endif %}
+                                    {% endfor %}
+                                    <p>{{ review.text }}</p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p>Отзывов на компанию нет</p>
+                        {% endif %}
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{% url 'companyReview' company.slug %}" type="button" class="btn btn-outline-success">
+                            Написать свой отзыв
+                        </a>
+                        <button type="button" class="btn btn-outline-warning" data-mdb-dismiss="modal">
+                        Закрыть
+                        </button>
+                    </div>
+                    </div>
+                </div>
+                </div>
                 <p>{{ company.description }}</p>
             </div>
         </div>
     </div>
 </section>
-<section class="product-items container">
-    {% for product in products %}
-    <div class="product-item">
-        <p class="heading">{{ product.name }}</p>
-        <img src="{{ product.image.url }}">
-        <p>{{ product.description }}</p>
-        <button>{{ product.price }} тг</button>
+<section class="container mb-4" style="background-color: #d9fade;">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for product in products %}
+            <div class="col" style="width: 33%; height: auto;">
+                <div class="card h-100">
+                <img
+                    class="img-fluid rounded"
+                    style="width: 100%; height: auto;"
+                    src="{{ product.image.url }}"
+                />
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+                    {% if product.new_price %}
+                    <p class="card-text"><del>{{ product.price }} $</del> {{ product.new_price }}$</p>
+                    {% else %}
+                    <p class="card-text">{{ product.price }}</p>
+                    {% endif %}
+                </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-    {% endfor %}
+
 </section>
 {% endblock content %}

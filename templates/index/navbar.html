@@ -1,19 +1,62 @@
-<header>
-    <a class="nav-link" href="{% url 'index' %}"><h1 class="logo fancy-font">FoodStore</h1></a>
-    <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <nav>
-      <ul>
-        <li><a href="{% url 'companies' %}">Все компании</a></li>
-        <li><a href="categories.html">Все категории</a></li>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarCenteredExample"
+      aria-controls="navbarCenteredExample"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div
+      class="collapse navbar-collapse justify-content-center"
+      id="navbarCenteredExample"
+    >
+      <!-- Left links -->
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <a class="navbar-brand" href="{% url 'index' %}">FoodStore</a>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{% url 'companies' %}">Все компании</a>
+        </li>
         {% if request.user.is_authenticated %}
-          <li><a href="{% url 'userProfile' %}">Профиль</a></li>
-          <li><a href="{% url 'logoutUser' %}">Выйти</a></li>
+        <!-- Navbar dropdown -->
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Профиль
+          </a>
+          <!-- Dropdown menu -->
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" href="{% url 'userProfile' %}">Ваш Профиль</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'logoutUser' %}">Выйти</a>
+            </li>
+          </ul>
+        </li>
         {% else %}
-          <li><a href="{% url 'loginUser' %}">Войти</a></li>
+        <li>
+          <a class="dropdown-item" href="{% url 'loginUser' %}">Войти</a>
+        </li>
         {% endif %}
       </ul>
-    </nav>
-    <label for="nav-toggle" class="nav-toggle-label">
-      <span></span>
-    </label>
-</header>
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
